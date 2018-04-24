@@ -1,0 +1,38 @@
+server:
+  port: 7071
+
+spring:
+  application:
+    name: service-b
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+  zipkin:
+    enabled: true
+    sender:
+      type: kafka
+  sleuth:
+    sampler:
+      probability: 1.0
+    hystrix:
+      strategy:
+        enabled: false
+    rxjava:
+      schedulers:
+        hook:
+          enabled: false
+    scheduled:
+      enabled: false
+    messaging:
+      kafka:
+        enabled: true
+    enabled: true
+
+eureka:
+  client:
+    registry-fetch-interval-seconds: 20
+    serviceUrl:
+      defaultZone: http://127.0.0.1:1314/eureka/,http://127.0.0.1:1315/eureka/
+  instance:
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
