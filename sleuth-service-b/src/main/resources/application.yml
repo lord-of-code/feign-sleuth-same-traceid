@@ -27,6 +27,17 @@ spring:
         enabled: true
     enabled: true
 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+  threadpool:
+    default:
+      coreSize: 10
+
 eureka:
   client:
     registry-fetch-interval-seconds: 20

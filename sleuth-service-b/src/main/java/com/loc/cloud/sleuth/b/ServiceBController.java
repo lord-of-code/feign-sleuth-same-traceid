@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ServiceBController {
 
   @RequestMapping("/call")
-  public String traced() {
+  public String traced() throws Exception {
+    Thread.sleep(600);
     String traceId = MDC.get("X-B3-TraceId");
     log.info("trace id is {}", traceId);
     return "call/" + traceId;
